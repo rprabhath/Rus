@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 5",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Name]\n,[age]\n FROM [rr].[temp]\n\n Alter table [rr].[temp]\n Add ID integer NOT NULL PRIMARY KEY   \n\n Create table temp_test\n (ID int NOT NULL ,\n [Name] varchar(50)\n,[age] INt\n )\n\nALTER TABLE temp_test\nADD CONSTRAINT PK_id PRIMARY KEY NONCLUSTERED (ID) NOT ENFORCED;\n\n\nINSERT into temp_test\n VALUES(2,'Savinda',40)\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rus_dedicateted",
+				"poolName": "rus_dedicateted"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

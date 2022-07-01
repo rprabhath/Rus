@@ -1,0 +1,25 @@
+{
+	"name": "LakeDB",
+	"properties": {
+		"Name": "LakeDB",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://fsrr@stgrr.dfs.core.windows.net/LakeDB",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "ruiruws-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 6,
+		"ObjectId": "cd3e46b5-4745-483c-b5ad-c3770ad3b296"
+	},
+	"type": "DATABASE"
+}

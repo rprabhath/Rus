@@ -1,0 +1,58 @@
+{
+	"name": "DataFlow_test",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AlterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          Name as string,",
+				"          Age as string,",
+				"          { Sal} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 alterRow(upsertIf(true())) ~> AlterRow1",
+				"AlterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'synapse',",
+				"     databaseType: 'spark',",
+				"     format: 'table',",
+				"     database: 'LakeDB',",
+				"     tableName: 'Details',",
+				"     input(",
+				"          ID as integer,",
+				"          Name as string,",
+				"          Age as integer,",
+				"          Sal as integer",
+				"     ),",
+				"     mapColumn(",
+				"          ID,",
+				"          Name,",
+				"          Age,",
+				"          Sal = { Sal}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Name]\n,[age]\n FROM [rr].[temp]\n\n ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rus_dedicateted",
+				"poolName": "rus_dedicateted"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
